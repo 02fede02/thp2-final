@@ -1,13 +1,12 @@
 import { Router } from "express";
-import Controller from "../controller/Controller.js";
+import SondaController from "../controller/SondaController.js";
 
 const routes = Router();
-const controller = new Controller();
+const sondaController = new SondaController();
 
-routes.post("/", controller.ingresarPalabra);
-routes.get("/", controller.listarPalabras);
-routes.delete("/:palabra", controller.borrarPalabras);
-routes.get("/all", controller.listarCountPalabras);
-routes.get("/:cantidad", controller.allApiPalabras);
+routes.get("/sondas", sondaController.getAllSondas);
+routes.get("/sondas/:id", sondaController.getSondasById);
+routes.post("/sondas", sondaController.addSonda);
+routes.get("/estadisticas", sondaController.getStatistics);
 
 export default routes;
